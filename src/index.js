@@ -6,6 +6,8 @@ const habitat = Widget => {
   // preact root render helper
   let root = null;
 
+  let rendered = false;
+
   let render = (
     {
       selector = null,
@@ -21,13 +23,13 @@ const habitat = Widget => {
       clientSpecified
     });
     let loaded = () => {
-      if (elements.length > 0) {
+      if (elements.length > 0 && rendered == false) {
         let elements = widgetDOMHostElements({
           selector,
           inline,
           clientSpecified
         });
-
+        rendered = true;
         return preactRender(widget, elements, root, clean, defaultProps);
       }
     };
