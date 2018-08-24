@@ -101,15 +101,11 @@ var widgetDOMHostElements = function (
   var inline = ref.inline;
   var clientSpecified = ref.clientSpecified;
 
-  console.log("SEARCH HOST");
   var hostNodes = [];
   var currentScript = getExecutedScript();
 
   if (inline === true) {
-    console.log("inline");
     var parentNode = currentScript.parentNode;
-    console.log(currentScript);
-    console.log("parent", parentNode);
     hostNodes.push(parentNode);
   }
   if (clientSpecified === true && !selector) {
@@ -121,8 +117,6 @@ var widgetDOMHostElements = function (
       hostNodes.push(queriedTag);
     });
   }
-
-  console.log(hostNodes);
   return hostNodes;
 };
 
@@ -175,9 +169,7 @@ var habitat = function (Widget) {
           inline: inline,
           clientSpecified: clientSpecified
         });
-        console.log("RENDERING WIDGET");
         rendered = true;
-
         return preactRender(widget, elements$1, root, clean, defaultProps);
       }
     };
